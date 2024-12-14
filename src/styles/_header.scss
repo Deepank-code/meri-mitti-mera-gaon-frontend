@@ -1,0 +1,71 @@
+.header {
+  @include flex(row, space-between, center, unset);
+
+  height: auto;
+  margin: auto 2em;
+  > div > img {
+    width: 90px;
+    height: 90px;
+  }
+  > div {
+    @include flex(row, center, center, unset);
+  }
+  > div > .name-logo {
+    height: 50px;
+    float: right;
+    vertical-align: middle;
+  }
+  > .hamburger {
+    display: none;
+  }
+  .item-in-cart {
+    position: absolute;
+    font-size: 12px;
+    padding: 2px 8px;
+    top: -5px;
+    color: white;
+    background-color: rgb(56, 255, 73);
+    border-radius: 50%;
+  }
+  > .nav-links {
+    @include flex(row, unset, unset, 1.6rem);
+
+    > a {
+      @include flex(row, center, center, 0.5rem);
+
+      color: rgb(0, 0, 0);
+      letter-spacing: 2px;
+      font-size: 1.2rem;
+      transition: padding 0.5s;
+    }
+    .active {
+      padding-left: 0.7em;
+      padding-right: 0.7em;
+      background-color: rgb(56, 255, 73);
+      border-radius: 10px;
+      color: #ffffff;
+    }
+
+    button {
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      background-color: transparent;
+      &:hover {
+        color: rgb(36, 245, 60);
+      }
+    }
+    dialog {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      width: 100px;
+      position: absolute;
+      left: calc(100% - 100px);
+      top: 0%;
+      > div {
+        @include flex(column, flex-start, center, 0.25rem);
+      }
+    }
+  }
+}

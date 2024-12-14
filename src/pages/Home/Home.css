@@ -1,0 +1,278 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap");
+#parent-home-div {
+  max-width: 85%;
+  margin: auto;
+}
+.banner {
+  display: flex;
+  height: 100%;
+  min-height: 80vh;
+}
+.left-section {
+  width: 50%;
+  margin: auto;
+  position: relative;
+}
+.left-section > p#first-para {
+  display: inline-block;
+  width: 150px;
+  padding: 10px;
+  background-color: #f7cece;
+  color: #eb5757;
+  border-radius: 40px;
+  text-align: center;
+}
+.left-section > h2 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bolder;
+  font-size: 72px;
+  line-height: 90px;
+}
+.left-section > h2 > span {
+  color: #eb5757;
+  font-weight: bolder;
+  margin-top: 2em;
+}
+.get-started-btn {
+  padding: 10px 25px;
+  border-radius: 10px;
+  font-size: 13px;
+  background-color: #eb5757;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+}
+.right-section {
+  position: relative;
+  width: 50%;
+  overflow: hidden;
+}
+.clock_icon {
+  width: 100px;
+  height: 97px;
+  top: 10%;
+  position: absolute;
+}
+.parent-img-div {
+  position: relative;
+  width: 600px;
+  height: 600px;
+}
+.bg-icon {
+  width: 650px;
+  height: 650px;
+
+  position: absolute;
+  right: 5%;
+  z-index: -1;
+}
+.arrow-icon {
+  position: absolute;
+  right: 5%;
+  top: 15%;
+  z-index: 1;
+}
+.eating-girl {
+  width: 900px;
+  position: absolute;
+  top: -45%;
+  left: -20%;
+  transform: scale(0.57);
+}
+.pizza-widzet {
+  position: absolute;
+  bottom: -10%;
+  left: -15%;
+  transform: scale(0.6);
+}
+
+.products-section {
+  /* width: 90%; */
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  margin: 3em auto 3em auto;
+  height: auto;
+}
+@media only screen and (max-width: 992px) {
+  .products-section {
+    flex-wrap: wrap;
+  }
+  .left-section > p#first-para {
+    width: 120px;
+  }
+  .left-section > h2 {
+    font-size: 62px;
+    line-height: 78px;
+  }
+
+  .get-started-btn {
+    padding: 10px 25px;
+  }
+  .right-section {
+    position: relative;
+    width: 50%;
+    overflow: hidden;
+  }
+  .clock_icon {
+    width: 80px;
+    height: 77px;
+    top: 10%;
+    position: absolute;
+  }
+  .parent-img-div {
+    position: relative;
+    width: 600px;
+    height: 600px;
+  }
+  .bg-icon {
+    width: 550px;
+    height: 550px;
+    right: 27%;
+    top: 10%;
+  }
+  .arrow-icon {
+    right: 5%;
+    top: 0%;
+  }
+  .eating-girl {
+    position: absolute;
+    top: -50%;
+    left: -40%;
+    transform: scale(0.45);
+  }
+  .pizza-widzet {
+    transform: scale(0.5);
+  }
+}
+@media only screen and (max-width: 768px) {
+  .products-section {
+    flex-wrap: wrap;
+  }
+  .left-section > p#first-para {
+    width: 120px;
+  }
+  .left-section > h2 {
+    font-size: 50px;
+    line-height: 69px;
+  }
+
+  .get-started-btn {
+    padding: 10px 25px;
+  }
+  .right-section {
+    position: relative;
+    width: 50%;
+    overflow: hidden;
+  }
+
+  .bg-icon {
+    width: 530px;
+    height: 530px;
+    top: 5%;
+    right: 27%;
+  }
+  .arrow-icon {
+    right: 5%;
+    top: 0%;
+  }
+  .eating-girl {
+    position: absolute;
+    top: -19%;
+    left: -60%;
+    transform: scale(0.42);
+  }
+  .pizza-widzet {
+    transform: scale(0.5);
+  }
+}
+@media only screen and (max-width: 600px) {
+  .banner {
+    flex-direction: column;
+  }
+  .left-section {
+    width: auto;
+    margin: 3em auto;
+    text-align: center;
+    position: relative;
+  }
+  .left-section > p#first-para {
+    display: inline-block;
+
+    width: 120px;
+    padding: 10px;
+    background-color: #f7cece;
+    color: #eb5757;
+    border-radius: 40px;
+    text-align: center;
+  }
+  .left-section > h2 {
+    font-family: "Open Sans", sans-serif;
+    font-weight: bolder;
+    font-size: 65px;
+    line-height: 90px;
+  }
+  .left-section > h2 > span {
+    color: #eb5757;
+    font-weight: bolder;
+  }
+  .get-started-btn {
+    padding: 10px 25px;
+    border-radius: 10px;
+    font-size: 12px;
+    background-color: #eb5757;
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+  }
+  .right-section {
+    position: relative;
+    width: auto;
+    overflow: hidden;
+  }
+  .clock_icon {
+    width: 100px;
+    height: 97px;
+    top: 10%;
+    position: absolute;
+  }
+  .parent-img-div {
+    position: relative;
+    width: 600px;
+    height: 500px;
+  }
+  .bg-icon {
+    width: 690px;
+    height: 690px;
+
+    position: absolute;
+    top: -20%;
+    right: 10%;
+    z-index: -1;
+  }
+  .clock_icon {
+    width: 50px;
+    height: 57px;
+    top: 10%;
+    position: absolute;
+  }
+  .arrow-icon {
+    transform: scale(0.7);
+    right: 5%;
+    top: 10%;
+    z-index: 1;
+  }
+  .eating-girl {
+    top: -70%;
+    left: -34%;
+    transform: scale(0.5);
+  }
+  .pizza-widzet {
+    bottom: -10%;
+    left: -15%;
+    transform: scale(0.5);
+  }
+}

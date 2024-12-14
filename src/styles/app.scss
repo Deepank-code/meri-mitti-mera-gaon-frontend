@@ -1,0 +1,199 @@
+@import "admin/mixin";
+@import "./_cart";
+@import "./login";
+@import "./search";
+@import "./header";
+@import "./shipping";
+@import "./admin/chart";
+@import "./admin/dashboard";
+@import "./admin/product";
+
+@import "./mediaquery.scss";
+@import "./admin/mediaquery";
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.red {
+  color: red;
+}
+.purple {
+  color: rgb(47, 0, 255);
+}
+.green {
+  color: rgb(0, 195, 0);
+}
+.sidebar-link {
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+}
+// a.active {
+//   background-color: rgba(92, 240, 66, 0.56);
+//   color: rgba(0, 0, 0, 0.8) !important;
+// }
+.container {
+  max-width: 1367px;
+  width: 100%;
+  margin: auto;
+  overflow: auto;
+  > h1 {
+    @include heading;
+    margin: 1rem 0;
+    text-align: left;
+  }
+}
+.heading {
+  @include heading;
+  margin: 1rem 0;
+  text-align: center;
+}
+.adminContainer {
+  @include grid(1fr 4fr, 2rem);
+  height: 100vh;
+  background-color: rgb(247, 247, 247);
+
+  > aside {
+    width: 100%;
+    background-color: white;
+    padding: 1rem;
+    z-index: 10;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    > div {
+      margin: 2rem 1rem;
+      > h5 {
+        @include heading(2px);
+        opacity: 0.8;
+        margin: 1em 0;
+      }
+      > ul {
+        @include flex(column, unset, unset, 0.5rem);
+        list-style: none;
+        > li {
+          transition: padding 2s;
+          > a {
+            color: rgba(0, 0, 0, 0.825);
+            @include flex(row, unset);
+          }
+          .active {
+            background-color: rgba(92, 240, 66, 0.56);
+            color: rgba(0, 0, 0, 0.8) !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  th,
+  td {
+    padding: 8px;
+    text-align: center;
+    vertical-align: middle;
+  }
+  th {
+    font-weight: bold;
+    color: #0000009e;
+    font-size: 1.1rem;
+    font-weight: 400;
+    padding: 2rem 1rem;
+  }
+  tbody {
+    tr {
+      box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.093);
+    }
+    td {
+      padding: 1rem;
+      img {
+        width: 4rem;
+        height: 4rem;
+        object-fit: contain;
+        border-radius: 10px;
+      }
+      a {
+        text-decoration: none;
+        background-color: rgba(44, 104, 255, 0.455);
+        color: rgba(44, 104, 255);
+        padding: 0.25rem 0.5rem;
+        border-radius: 10px;
+      }
+      button {
+        width: 2rem;
+        height: 2rem;
+        font-size: 1.1rem;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        cursor: pointer;
+        color: rgba(255, 44, 44);
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+      &:first-child {
+        border-left: none;
+      }
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+}
+
+.table-pagination {
+  @include flex(row);
+  padding: 2rem;
+  > button {
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: rgba(0, 115, 255);
+    color: white;
+    &:disabled {
+      background-color: rgba(0, 115, 255, 0.1);
+    }
+  }
+}
+
+#hamburger {
+  display: grid;
+  place-items: center;
+  @include square(3rem);
+  border: none;
+  cursor: pointer;
+  color: #00fd119e;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  font-size: 2rem;
+  background-color: whitesmoke;
+  border-radius: 20%;
+  z-index: 9;
+}
+#close-modal-btn {
+  background-color: rgb(251, 67, 16);
+  color: white;
+  width: 100%;
+  padding: 0.8em;
+  font-size: 0.9em;
+  border: none;
+  border-radius: 10px;
+}

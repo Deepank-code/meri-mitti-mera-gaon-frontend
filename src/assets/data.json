@@ -1,0 +1,50 @@
+{
+  "categories": [
+    {
+      "value": 40,
+      "heading": "youth Scheme"
+    },
+    {
+      "value": 50,
+      "heading": "Beez godam"
+    },
+    {
+      "value": 80,
+      "heading": "goverment Scheme"
+    },
+    {
+      "value": 30,
+      "heading": "PYQ"
+    }
+  ],
+  "transaction": [
+    {
+      "id": "hjsdghgh",
+      "amount": 44559,
+      "quantity": 3,
+      "discount": 500,
+      "status": "Processing"
+    },
+    {
+      "id": "hjjgjgj",
+      "amount": 44559,
+      "quantity": 3,
+      "discount": 500,
+      "status": "Processing"
+    },
+    {
+      "id": "gffgh",
+      "amount": 44559,
+      "quantity": 3,
+      "discount": 500,
+      "status": "Processing"
+    },
+    {
+      "id": "mjhghjgh",
+      "amount": 44559,
+      "quantity": 3,
+      "discount": 500,
+      "status": "Processing"
+    }
+  ]
+}

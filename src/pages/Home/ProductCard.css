@@ -1,0 +1,88 @@
+.productCard {
+  width: 220px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: rgb(40, 40, 40);
+  margin: 2em;
+  transition: all 0.5s;
+  padding-bottom: 0.5em;
+  border-radius: 20px;
+}
+.productCard > img {
+  width: 220px;
+  height: 190px;
+
+  border-radius: 20px 20px 0 0;
+}
+.productCard > div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.productCard > div > span {
+  margin: 0.5vmax;
+  font: 300 13px;
+}
+.productCard > p {
+  font-size: 18px;
+  margin: 1em 0.5em;
+  font-weight: bolder;
+
+  margin-bottom: 0;
+  text-align: start;
+}
+.productCard > span {
+  margin: 0.5em 0.5em;
+  color: tomato;
+
+  font-size: 1rem;
+}
+#stock-span {
+  position: absolute;
+  top: 0;
+  left: -1.4em;
+  color: white;
+  border-radius: 10%;
+  background-color: rgb(61, 235, 73);
+  padding: 2px 1em;
+}
+.productCard > button {
+  background-color: rgb(61, 235, 73);
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
+  width: 50%;
+  margin: 1em 0.5em;
+  border: none;
+  padding: 0.5em 0em;
+}
+#heart {
+  position: absolute;
+  bottom: 0.6em;
+  right: 1em;
+  transition: all 0.5s ease-in-out;
+}
+#heart:hover {
+  transform: scale(1.1);
+}
+.productCard:hover {
+  box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
+  transform: translateY(-1em);
+}
+@media screen and (max-width: 600px) {
+  .productCard > p {
+    font-size: 12px;
+  }
+  .productCard > div {
+    margin: 0;
+    display: block;
+  }
+  .productCard > span {
+    font-size: 0.5rem;
+  }
+  .productCard > div > span {
+    margin: 0 0.5vmax;
+    font: 300 12px "Roboto";
+  }
+}

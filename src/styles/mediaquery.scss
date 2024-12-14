@@ -1,0 +1,207 @@
+@media screen and (width<=1200px) {
+  .header {
+    > div > img {
+      width: 60px;
+      height: 60px;
+    }
+    > div > .name-logo {
+      height: 40px;
+      float: right;
+      vertical-align: middle;
+    }
+    > .nav-links {
+      @include flex(row, unset, unset, 1rem);
+
+      > a {
+        @include flex(row, center, center, 0.5rem);
+
+        color: rgb(0, 0, 0);
+        letter-spacing: 2px;
+        font-size: 1rem;
+        transition: padding 0.5s;
+      }
+      .active {
+        padding-left: 0.7em;
+        padding-right: 0.7em;
+        background-color: rgb(56, 255, 73);
+        border-radius: 10px;
+        color: #ffffff;
+      }
+
+      button {
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+        background-color: transparent;
+        &:hover {
+          color: rgb(36, 245, 60);
+        }
+      }
+      dialog {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        width: 100px;
+        position: absolute;
+        left: calc(100% - 100px);
+        top: 0%;
+        > div {
+          @include flex(column, flex-start, center, 0.25rem);
+        }
+      }
+    }
+  }
+}
+@media screen and (width<=900px) {
+  .header {
+    > div > img {
+      width: 60px;
+      height: 60px;
+    }
+    > div > .name-logo {
+      height: 40px;
+      float: right;
+      vertical-align: middle;
+    }
+    > .nav-links {
+      @include flex(row, unset, unset, 1rem);
+
+      > a {
+        @include flex(row, center, center, 0.5rem);
+
+        color: rgb(0, 0, 0);
+        letter-spacing: 2px;
+        font-size: 0.6rem;
+        transition: padding 0.5s;
+      }
+      .active {
+        padding-left: 0.6em;
+        padding-right: 0.6em;
+      }
+
+      button {
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+        background-color: transparent;
+        &:hover {
+          color: rgb(36, 245, 60);
+        }
+      }
+      dialog {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        width: 100px;
+        position: absolute;
+        left: calc(100% - 100px);
+        top: 0%;
+        > div {
+          @include flex(column, flex-start, center, 0.25rem);
+        }
+      }
+    }
+  }
+}
+@media screen and (width<=600px) {
+  .header {
+    > div > img {
+      width: 60px;
+      height: 60px;
+    }
+    > div > .name-logo {
+      height: 40px;
+      float: right;
+      vertical-align: middle;
+    }
+
+    > .hamburger {
+      display: block;
+    }
+
+    > .responsive {
+      @include flex(column, center, start, 0.5rem);
+      position: absolute;
+      top: 10%;
+      right: 2%;
+      z-index: 2;
+      width: 230px;
+      height: 260px;
+      /* From https://css.glass */
+      background: rgba(255, 255, 255, 0.49);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(8.3px);
+      -webkit-backdrop-filter: blur(8.3px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 2em 1em;
+      > a {
+        color: rgb(0, 0, 0);
+        letter-spacing: 2px;
+        font-size: 16px;
+        transition: padding 0.5s;
+      }
+      .active {
+        padding-left: 0.4em;
+        padding-right: 0.4em;
+      }
+    }
+  }
+}
+
+// .header {
+//   @include flex(row, space-between, center, unset);
+
+//   height: auto;
+//   margin: auto 2em;
+//   > div > img {
+//     width: 90px;
+//     height: 90px;
+//   }
+//   > div {
+//     @include flex(row, center, center, unset);
+//   }
+//   > div > .name-logo {
+//     height: 50px;
+//     float: right;
+//     vertical-align: middle;
+//   }
+//   > .nav-links {
+//     @include flex(row, unset, unset, 1.6rem);
+//     > a {
+//       color: rgb(0, 0, 0);
+//       letter-spacing: 2px;
+//       font-size: 1.2rem;
+//       transition: padding 0.5s;
+//     }
+//     .active {
+//       padding-left: 0.7em;
+//       padding-right: 0.7em;
+//       background-color: rgb(56, 255, 73);
+//       border-radius: 10px;
+//       color: #ffffff;
+//     }
+//     button {
+//       border: none;
+//       font-size: 1.2rem;
+//       cursor: pointer;
+//       background-color: transparent;
+//       &:hover {
+//         color: rgb(36, 245, 60);
+//       }
+//     }
+//     dialog {
+//       border: 1px solid #ccc;
+//       border-radius: 5px;
+//       padding: 10px;
+//       width: 100px;
+//       position: absolute;
+//       left: calc(100% - 100px);
+//       top: 0%;
+//       > div {
+//         @include flex(column, flex-start, center, 0.25rem);
+//       }
+//     }
+//   }
+// }
