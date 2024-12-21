@@ -140,6 +140,20 @@
     }
   }
   .shipping-info-card {
+    > .transaction-delete-btn {
+      position: absolute;
+      top: -3%;
+      left: 44%;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      color: red;
+      border: none;
+      transition: all 0.3s ease;
+    }
+    > .transaction-delete-btn:hover {
+      transform: scale(1.3);
+    }
     > h1 {
       text-align: center;
       @include heading(2px);
@@ -152,7 +166,7 @@
     > p {
       margin: 0.5rem;
     }
-    > button {
+    > .process-status-btn {
       margin: 2rem 0;
       padding: 1rem;
       border: none;

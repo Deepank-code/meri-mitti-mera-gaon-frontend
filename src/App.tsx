@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+} from "react-router-dom";
 
 import { lazy, Suspense, useEffect } from "react";
 import Loader from "./Components/Loader";
@@ -13,12 +18,15 @@ import { userExist, userNotExist } from "./redux/reducer/userReducer.ts";
 import { getUser } from "./redux/api/userApi.ts";
 import { UserReducerInitalStateType } from "./types/reducer-type.ts";
 import ProtectedRoute from "./Components/ProtectedRoute.tsx";
+
 const Home = lazy(() => import("./pages/Home/Home.tsx"));
 const Cart = lazy(() => import("./pages/Cart.tsx"));
 const Shipping = lazy(() => import("./pages/Shipping.tsx"));
 const Login = lazy(() => import("./pages/Login.tsx"));
 const Search = lazy(() => import("./pages/Search.tsx"));
 const Orders = lazy(() => import("./pages/Orders.tsx"));
+const NotFound = lazy(() => import("./pages/NotFound.tsx"));
+const Checkout = lazy(() => import("./pages/checkout.tsx"));
 
 // admin routes
 const Dashboard = lazy(() => import("./pages/Admin/Dashboard.tsx"));
@@ -41,6 +49,7 @@ function App() {
   const { user, loading } = useSelector(
     (state: { userReducer: UserReducerInitalStateType }) => state.userReducer
   );
+
   const dispatch = useDispatch();
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
@@ -48,7 +57,9 @@ function App() {
         const data = await getUser(user.uid);
 
         dispatch(userExist(data.user));
-      } else dispatch(userNotExist());
+      } else {
+        dispatch(userNotExist());
+      }
     });
   }, []);
 
@@ -57,6 +68,7 @@ function App() {
   ) : (
     <Router>
       <Header user={user} />
+
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -71,12 +83,12 @@ function App() {
               </ProtectedRoute>
             }
           />
-
           {/* loogfed in user routes */}
           <Route
             element={<ProtectedRoute isAuthenticated={user ? true : false} />}
           >
             <Route path="/shipping" element={<Shipping />} />
+            <Route path="/pay" element={<Checkout />} />
             <Route path="/orders" element={<Orders />} />
             {/* <Route path="/order/:id" element={<Order />} /> */}
           </Route>
@@ -95,12 +107,10 @@ function App() {
             <Route path="/admin/customer" element={<Customers />} />
             <Route path="/admin/transaction" element={<Transaction />} />
           </Route>
-
           {/* charts */}
           <Route path="/admin/chart/bar" element={<BarCharts />} />
           <Route path="/admin/chart/pie" element={<PieChart />} />
           <Route path="/admin/chart/line" element={<LineChart />} />
-
           {/* management*/}
           <Route path="/admin/product/new-product" element={<NewProduct />} />
           <Route path="/admin/product/:id" element={<ProductManagement />} />
@@ -108,6 +118,7 @@ function App() {
             path="/admin/transaction/:id"
             element={<Transactionmanagement />}
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
       <Toaster position="bottom-center" />

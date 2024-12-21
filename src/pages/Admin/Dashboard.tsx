@@ -2,13 +2,18 @@ import { BsSearch } from "react-icons/bs";
 import AdminSideBar from "../../Components/AdminSideBar";
 import { FaRegBell } from "react-icons/fa";
 import { HiTrendingDown, HiTrendingUp } from "react-icons/hi";
-import data from "../../assets/data.json";
-import { Chart } from "chart.js";
+// import data from "../../assets/data.json";
+// import { Chart } from "chart.js";
 import { BarChart, DoughnutChart } from "../../Components/Charts";
 import { BiMaleFemale } from "react-icons/bi";
 import Table from "../../Components/DashboardTable";
 import quotes from "../../assets/quotes";
 import { useEffect, useState } from "react";
+import { useStatsQuery } from "../../redux/api/dashboardApi";
+import { RootState } from "../../redux/store";
+import { CustomError } from "../../types/api-types";
+import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 const greetTime = (): string => {
   const time = new Date();
@@ -26,6 +31,13 @@ const greetTime = (): string => {
 };
 
 const Dashboard = () => {
+  const { user } = useSelector((state: RootState) => state.userReducer);
+  const { isLoading, data, isError, error } = useStatsQuery(user?._id!);
+  if (isError) {
+    const err = error as CustomError;
+    toast.error(err.data.message);
+  }
+  const stats = data?.stats;
   const [randomQuote, setRandomQuote] = useState<string>("hello");
   useEffect(() => {
     setRandomQuote(quotes[Math.floor(Math.random() * 15 + 1)]);
@@ -59,30 +71,30 @@ const Dashboard = () => {
         <section className="widgetcontainer">
           <WidgetItem
             heading="Revenue"
-            percent={40}
+            percent={stats?.changePercent.revenue}
             amount={true}
-            value={30000}
+            value={stats?.count.revenue}
             color="rgb(0 115 225)"
           />
           <WidgetItem
             heading="Users"
-            percent={-40}
+            percent={stats?.changePercent.user}
             amount={true}
-            value={6000}
+            value={stats?.count.user}
             color="rgb(0 198 202)"
           />
           <WidgetItem
-            heading="Transaction"
-            percent={80}
+            heading="order"
+            percent={stats?.changePercent.order}
             amount={false}
-            value={30000}
+            value={stats?.count.order}
             color="rgb(225 96 0)"
           />
           <WidgetItem
             heading="Products"
-            percent={80}
+            percent={stats?.changePercent.product}
             amount={false}
-            value={30000}
+            value={stats?.count.product}
             color="rgb(76 0 255)"
           />
         </section>
@@ -90,8 +102,8 @@ const Dashboard = () => {
           <div className="revenue-chart">
             <h2>Revenue & transaction</h2>
             <BarChart
-              data_1={[434, 345, 344, 522, 345]}
-              data_2={[343, 234, 211, 452, 241, 341]}
+              data_1={stats?.chart.revenue}
+              data_2={stats?.chart.order}
               title_1="Revenue"
               title_2="transaction"
               bgColor_1="rgb(0,115,255"
@@ -101,15 +113,19 @@ const Dashboard = () => {
           <div className="dashboard-categories">
             <h2>Inventory </h2>
             <div>
-              {data.categories.map((i) => (
-                <CategoryItem
-                  key={i.heading}
-                  heading={i.heading}
-                  value={i.value}
-                  color={`hsl(${i.value * 5},${i.value * 7}%,50%)`}
-                  // color={`hsl(55,40%,50%)`}
-                />
-              ))}
+              {stats?.categoryCount.map((i) => {
+                const [heading, value] = Object.entries(i)[0];
+
+                return (
+                  <CategoryItem
+                    key={heading}
+                    heading={heading}
+                    value={value}
+                    color={`hsl(${value * 5},${value * 7}%,50%)`}
+                    // color={`hsl(55,40%,50%)`}
+                  />
+                );
+              })}
             </div>
           </div>
         </section>
@@ -118,7 +134,7 @@ const Dashboard = () => {
             <h2>Gender Ratio</h2>
             <DoughnutChart
               labels={["Male", "Female"]}
-              data={[23, 19]}
+              data={[stats?.userRatio.male, stats?.userRatio.female]}
               backgroundColor={[
                 "hsl(340,82%,56%)",
                 "hsl(82.91457286432161, 85.40772532188842%, 54.313725490196084%)",
@@ -129,7 +145,7 @@ const Dashboard = () => {
               <BiMaleFemale />
             </p>
           </div>
-          <Table data={data.transaction} />
+          <Table data={stats?.latestTransaction} />
         </section>
       </main>
     </div>
@@ -137,8 +153,8 @@ const Dashboard = () => {
 };
 interface WidgetPropsType {
   heading: string;
-  value: number;
-  percent: number;
+  value: number | undefined;
+  percent: number | undefined;
   color: string;
   amount?: boolean;
 }
@@ -153,15 +169,14 @@ const WidgetItem = ({
     <article className="widget">
       <div className="widgetInfo">
         <p>{heading}</p>
-        <h4>{amount ? `$${value}` : value}</h4>
+        <h4>{amount ? `${value}` : value}</h4>
         {percent > 0 ? (
           <span className="green">
-            <HiTrendingUp />+{percent}%
+            <HiTrendingUp />+{`${percent > 10000 ? 9999 : percent}`}%
           </span>
         ) : (
           <span className="red">
-            <HiTrendingDown />
-            {percent}%
+            <HiTrendingDown />-{`${percent < -10000 ? -9999 : percent}`}%
           </span>
         )}
       </div>
@@ -173,7 +188,10 @@ const WidgetItem = ({
           )}deg,rgb(255,255,255) 0)`,
         }}
       >
-        <span style={{ color }}>{percent}%</span>
+        <span style={{ color }}>
+          {percent > 0 && `${percent > 10000 ? 9999 : percent}`}%
+          {percent < 0 && `${percent < -10000 ? -9999 : percent}`}%
+        </span>
       </div>
     </article>
   );

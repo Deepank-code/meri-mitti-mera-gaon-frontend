@@ -3,13 +3,14 @@ import {
   AllOrdersResponse,
   MessageResponse,
   NewOrderRequest,
+  OrdersDetailsResponse,
   UpdateOrderRequest,
 } from "../../types/api-types";
 
 export const orderApi = createApi({
   reducerPath: "orderApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `${import.meta.env.VITE_SERVER}api/v1/product/`,
+    baseUrl: `${import.meta.env.VITE_SERVER}api/v1/order/`,
   }),
   tagTypes: ["orders"],
   endpoints: (builder) => ({
@@ -50,7 +51,7 @@ export const orderApi = createApi({
       query: (id) => `all?id=${id}`,
       providesTags: ["orders"],
     }),
-    ordersDetails: builder.query<AllOrdersResponse, string>({
+    ordersDetails: builder.query<OrdersDetailsResponse, string>({
       query: (id) => id,
       providesTags: ["orders"],
     }),

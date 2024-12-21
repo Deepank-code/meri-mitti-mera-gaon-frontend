@@ -4,10 +4,10 @@
 @import "./search";
 @import "./header";
 @import "./shipping";
+@import "./notfound";
 @import "./admin/chart";
 @import "./admin/dashboard";
 @import "./admin/product";
-
 @import "./mediaquery.scss";
 @import "./admin/mediaquery";
 :root {
@@ -57,6 +57,19 @@ a {
   @include heading;
   margin: 1rem 0;
   text-align: center;
+}
+.checkout-container {
+  max-width: 400px;
+  width: 100%;
+  margin: auto;
+  > form {
+    @include flex(column, flex-start, stretch, 2rem);
+    > button {
+      @include btn(1rem, rgb(56, 255, 73), #ffffff);
+      width: 100%;
+      font-size: 1.1rem;
+    }
+  }
 }
 .adminContainer {
   @include grid(1fr 4fr, 2rem);

@@ -1,10 +1,18 @@
 import { Column } from "react-table";
 import AdminSideBar from "../../Components/AdminSideBar";
-import { ReactElement, useCallback, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import TableHOC from "../../Components/TableHOC";
 import { Link } from "react-router-dom";
+
+import { useSelector } from "react-redux";
+
+import { useAllOrdersQuery } from "../../redux/api/orderApi";
+import { CustomError } from "../../types/api-types";
+import toast from "react-hot-toast";
+import { Skleton } from "../../Components/Loader";
+import { RootState } from "../../redux/store";
 interface DataType {
-  user: ReactElement;
+  user: string;
   amount: number;
   discount: number;
   quantity: number;
@@ -33,64 +41,55 @@ const columns: Column<DataType>[] = [
     accessor: "action",
   },
 ];
-const img = "https://randomuser.me/api/portraits/men/75.jpg";
-const arr: DataType[] = [
-  {
-    user: <img style={{ borderRadius: "50%" }} src={img} alt="name" />,
+const arr: [] = [];
 
-    amount: 2000,
-    discount: 50,
-    quantity: 22,
-    status: <span className="red">processing</span>,
-
-    action: <Link to="/admin/transaction/nhjgfh">Manage</Link>,
-  },
-  {
-    user: <img style={{ borderRadius: "50%" }} src={img} alt="name" />,
-
-    amount: 2000,
-    discount: 50,
-    quantity: 22,
-    status: <span className="green">processing</span>,
-    action: <Link to="/admin/transaction/gfhgh">Manage</Link>,
-  },
-  {
-    user: <img style={{ borderRadius: "50%" }} src={img} alt="name" />,
-
-    amount: 2000,
-    discount: 50,
-    quantity: 22,
-    status: <span className="purple">processing</span>,
-    action: <Link to="/admin/transaction/gfhfgh">Manage</Link>,
-  },
-  {
-    user: <img style={{ borderRadius: "50%" }} src={img} alt="name" />,
-
-    amount: 2000,
-    discount: 50,
-    quantity: 22,
-    status: <span className="red">processing</span>,
-
-    action: <Link to="/admin/transaction/gfdfg">Manage</Link>,
-  },
-];
 const Transaction = () => {
-  const [data] = useState<DataType[]>(arr);
-  const Table = useCallback(
-    TableHOC<DataType>(
-      columns,
-      data,
-      "dashboard-customer-box",
-      "Transaction",
-      true
-    ),
-    []
-  );
+  const { user } = useSelector((state: RootState) => state.userReducer);
+  const { isLoading, data, isError, error } = useAllOrdersQuery(user?._id!);
+  const [rows, setRows] = useState<DataType[]>(arr);
+  console.log(data);
+  if (isError) {
+    toast.error((error as CustomError).data.message);
+  }
+  const Table = TableHOC<DataType>(
+    columns,
+    rows,
+    "dashboard-customer-box",
+    "Transaction",
+    true
+  )();
+  useEffect(() => {
+    if (data?.orders) {
+      setRows(
+        data.orders.map((i) => ({
+          user: i.user.name,
+          amount: i.total,
+          discount: i.discount,
+          quantity: i.orderItems.length,
+          status: (
+            <span
+              className={
+                i.status === "Processing"
+                  ? "red"
+                  : i.status === "Shipped"
+                  ? "green"
+                  : "purple"
+              }
+            >
+              {i.status}
+            </span>
+          ),
+          action: <Link to={`/admin/transaction/${i._id}`}>Manage</Link>,
+        }))
+      );
+    }
+  }, [data]);
+
   return (
     <div className="adminContainer">
       {/* sidebar */}
       <AdminSideBar />
-      <main>{Table()}</main>
+      <main>{isLoading ? <Skleton count={20} /> : Table}</main>
     </div>
   );
 };

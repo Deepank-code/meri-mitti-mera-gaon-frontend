@@ -12,7 +12,7 @@ import {
   discountApplied,
   removeCartItems,
 } from "../redux/reducer/cartReducer";
-import toast from "react-hot-toast";
+
 import axios from "axios";
 
 const Cart = () => {
