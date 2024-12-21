@@ -6,7 +6,6 @@ import { HiTrendingDown, HiTrendingUp } from "react-icons/hi";
 // import { Chart } from "chart.js";
 import { BarChart, DoughnutChart } from "../../Components/Charts";
 import { BiMaleFemale } from "react-icons/bi";
-import Table from "../../Components/DashboardTable";
 import quotes from "../../assets/quotes";
 import { useEffect, useState } from "react";
 import { useStatsQuery } from "../../redux/api/dashboardApi";
@@ -14,6 +13,8 @@ import { RootState } from "../../redux/store";
 import { CustomError } from "../../types/api-types";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
+import { DashboardTable } from "../../Components/DashboardTable";
+import { Skleton } from "../../Components/Loader";
 
 const greetTime = (): string => {
   const time = new Date();
@@ -30,9 +31,11 @@ const greetTime = (): string => {
   }
 };
 
+const userPhoto =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgF2suM5kFwk9AdFjesEr8EP1qcyUvah8G7w&s";
 const Dashboard = () => {
   const { user } = useSelector((state: RootState) => state.userReducer);
-  const { isLoading, data, isError, error } = useStatsQuery(user?._id!);
+  const { isLoading, data, isError, error } = useStatsQuery(user?._id);
   if (isError) {
     const err = error as CustomError;
     toast.error(err.data.message);
@@ -47,107 +50,105 @@ const Dashboard = () => {
     <div className="adminContainer">
       {/* sidebar */}
       <AdminSideBar />
-      <main className="dashboard">
-        <div className="bar">
-          <BsSearch />
-          <input type="text" placeholder="Search for data,users" />
-          <FaRegBell />
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgF2suM5kFwk9AdFjesEr8EP1qcyUvah8G7w&s"
-            alt="user"
-          />
-        </div>
+      {isLoading ? (
+        <Skleton count={20} />
+      ) : (
+        <main className="dashboard">
+          <div className="bar">
+            <BsSearch />
+            <input type="text" placeholder="Search for data,users" />
+            <FaRegBell />
+            <img src={user?.photo || userPhoto} alt="user" />
+          </div>
 
-        <section className="greeting-section">
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgF2suM5kFwk9AdFjesEr8EP1qcyUvah8G7w&s"
-            alt="se"
-          />
-          <div>
-            <h1>Hey Deepank! {greetTime()}</h1>
-            <p>{randomQuote}</p>
-          </div>
-        </section>
-        <section className="widgetcontainer">
-          <WidgetItem
-            heading="Revenue"
-            percent={stats?.changePercent.revenue}
-            amount={true}
-            value={stats?.count.revenue}
-            color="rgb(0 115 225)"
-          />
-          <WidgetItem
-            heading="Users"
-            percent={stats?.changePercent.user}
-            amount={true}
-            value={stats?.count.user}
-            color="rgb(0 198 202)"
-          />
-          <WidgetItem
-            heading="order"
-            percent={stats?.changePercent.order}
-            amount={false}
-            value={stats?.count.order}
-            color="rgb(225 96 0)"
-          />
-          <WidgetItem
-            heading="Products"
-            percent={stats?.changePercent.product}
-            amount={false}
-            value={stats?.count.product}
-            color="rgb(76 0 255)"
-          />
-        </section>
-        <section className="graph-container">
-          <div className="revenue-chart">
-            <h2>Revenue & transaction</h2>
-            <BarChart
-              data_1={stats?.chart.revenue}
-              data_2={stats?.chart.order}
-              title_1="Revenue"
-              title_2="transaction"
-              bgColor_1="rgb(0,115,255"
-              bgColor_2="rgba(53,162,235,0.8)"
-            />
-          </div>
-          <div className="dashboard-categories">
-            <h2>Inventory </h2>
+          <section className="greeting-section">
+            <img src={user?.photo || userPhoto} alt="se" />
             <div>
-              {stats?.categoryCount.map((i) => {
-                const [heading, value] = Object.entries(i)[0];
-
-                return (
-                  <CategoryItem
-                    key={heading}
-                    heading={heading}
-                    value={value}
-                    color={`hsl(${value * 5},${value * 7}%,50%)`}
-                    // color={`hsl(55,40%,50%)`}
-                  />
-                );
-              })}
+              <h1>Hey Deepank! {greetTime()}</h1>
+              <p>{randomQuote}</p>
             </div>
-          </div>
-        </section>
-        <section className="transaction-container">
-          <div className="gender-chart">
-            <h2>Gender Ratio</h2>
-            <DoughnutChart
-              labels={["Male", "Female"]}
-              data={[stats?.userRatio.male, stats?.userRatio.female]}
-              backgroundColor={[
-                "hsl(340,82%,56%)",
-                "hsl(82.91457286432161, 85.40772532188842%, 54.313725490196084%)",
-              ]}
-              cutout={90}
+          </section>
+          <section className="widgetcontainer">
+            <WidgetItem
+              heading="Revenue"
+              percent={stats?.changePercent.revenue}
+              amount={true}
+              value={stats?.count.revenue}
+              color="rgb(0 115 225)"
             />
-            <p>
-              <BiMaleFemale />
-            </p>
-          </div>
-          <Table data={stats?.latestTransaction} />
-        </section>
-      </main>
+            <WidgetItem
+              heading="Users"
+              percent={stats?.changePercent.user}
+              amount={true}
+              value={stats?.count.user}
+              color="rgb(0 198 202)"
+            />
+            <WidgetItem
+              heading="order"
+              percent={stats?.changePercent.order}
+              amount={false}
+              value={stats?.count.order}
+              color="rgb(225 96 0)"
+            />
+            <WidgetItem
+              heading="Products"
+              percent={stats?.changePercent.product}
+              amount={false}
+              value={stats?.count.product}
+              color="rgb(76 0 255)"
+            />
+          </section>
+          <section className="graph-container">
+            <div className="revenue-chart">
+              <h2>Revenue & transaction</h2>
+              <BarChart
+                data_1={stats?.chart.revenue}
+                data_2={stats?.chart.order}
+                title_1="Revenue"
+                title_2="transaction"
+                bgColor_1="rgb(0,115,255"
+                bgColor_2="rgba(53,162,235,0.8)"
+              />
+            </div>
+            <div className="dashboard-categories">
+              <h2>Inventory </h2>
+              <div>
+                {stats?.categoryCount.map((i) => {
+                  const [heading, value] = Object.entries(i)[0];
+
+                  return (
+                    <CategoryItem
+                      key={heading}
+                      heading={heading}
+                      value={value}
+                      color={`hsl(${value * 5},${value * 7}%,50%)`}
+                      // color={`hsl(55,40%,50%)`}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+          <section className="transaction-container">
+            <div className="gender-chart">
+              <h2>Gender Ratio</h2>
+              <DoughnutChart
+                labels={["Male", "Female"]}
+                data={[stats?.userRatio.male, stats?.userRatio.female]}
+                backgroundColor={[
+                  "hsl(340,82%,56%)",
+                  "hsl(82.91457286432161, 85.40772532188842%, 54.313725490196084%)",
+                ]}
+                cutout={90}
+              />
+              <p>
+                <BiMaleFemale />
+              </p>
+            </div>
+            <DashboardTable data={stats?.latestTransaction!} />
+          </section>
+        </main>
+      )}
     </div>
   );
 };
