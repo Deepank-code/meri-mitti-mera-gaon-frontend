@@ -14,6 +14,7 @@ import toast from "react-hot-toast";
 import { Skleton } from "../../Components/Loader";
 
 import { responseToast } from "../../utils/feature";
+import { userPhoto } from "./Dashboard";
 
 interface DataType {
   avatar: ReactElement;
@@ -66,7 +67,13 @@ const Customers = () => {
       setRows(
         data.users.map((i) => {
           return {
-            avatar: <img style={{ borderRadius: "50%" }} src={i?.photo} />,
+            avatar: (
+              <img
+                style={{ borderRadius: "50%" }}
+                src={(!isLoading && i?.photo) || userPhoto}
+                loading="lazy"
+              />
+            ),
             name: i.name,
             email: i.email,
             gender: i.gender,

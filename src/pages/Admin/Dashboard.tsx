@@ -1,24 +1,22 @@
 import { BsSearch } from "react-icons/bs";
-import AdminSideBar from "../../Components/AdminSideBar";
 import { FaRegBell } from "react-icons/fa";
 import { HiTrendingDown, HiTrendingUp } from "react-icons/hi";
-// import data from "../../assets/data.json";
-// import { Chart } from "chart.js";
-import { BarChart, DoughnutChart } from "../../Components/Charts";
-import { BiMaleFemale } from "react-icons/bi";
-import quotes from "../../assets/quotes";
+import AdminSideBar from "../../Components/AdminSideBar";
+
 import { useEffect, useState } from "react";
-import { useStatsQuery } from "../../redux/api/dashboardApi";
-import { RootState } from "../../redux/store";
-import { CustomError } from "../../types/api-types";
-import toast from "react-hot-toast";
+import { BiMaleFemale } from "react-icons/bi";
 import { useSelector } from "react-redux";
+import quotes from "../../assets/quotes";
+import { BarChart, DoughnutChart } from "../../Components/Charts";
 import { DashboardTable } from "../../Components/DashboardTable";
 import { Skleton } from "../../Components/Loader";
+import { useStatsQuery } from "../../redux/api/dashboardApi";
+import { RootState } from "../../redux/store";
+import { Navigate } from "react-router-dom";
 
 const greetTime = (): string => {
   const time = new Date();
-  let currTime = time.getHours();
+  const currTime = time.getHours();
 
   if (currTime >= 1 && currTime <= 12) {
     return "Good Morning 🌄";
@@ -31,21 +29,20 @@ const greetTime = (): string => {
   }
 };
 
-const userPhoto =
+export const userPhoto =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgF2suM5kFwk9AdFjesEr8EP1qcyUvah8G7w&s";
 const Dashboard = () => {
   const { user } = useSelector((state: RootState) => state.userReducer);
-  const { isLoading, data, isError, error } = useStatsQuery(user?._id);
-  if (isError) {
-    const err = error as CustomError;
-    toast.error(err.data.message);
-  }
+  const { isLoading, data, isError } = useStatsQuery(user?._id);
+
   const stats = data?.stats;
   const [randomQuote, setRandomQuote] = useState<string>("hello");
   useEffect(() => {
     setRandomQuote(quotes[Math.floor(Math.random() * 15 + 1)]);
   }, []);
-
+  if (isError) {
+    return <Navigate to={"/admin/dashboard"} />;
+  }
   return (
     <div className="adminContainer">
       {/* sidebar */}
@@ -58,11 +55,11 @@ const Dashboard = () => {
             <BsSearch />
             <input type="text" placeholder="Search for data,users" />
             <FaRegBell />
-            <img src={user?.photo || userPhoto} alt="user" />
+            <img src={user?.photo || userPhoto} alt="user" loading="lazy" />
           </div>
 
           <section className="greeting-section">
-            <img src={user?.photo || userPhoto} alt="se" />
+            <img src={user?.photo || userPhoto} alt="se" loading="lazy" />
             <div>
               <h1>Hey Deepank! {greetTime()}</h1>
               <p>{randomQuote}</p>
@@ -134,7 +131,7 @@ const Dashboard = () => {
               <h2>Gender Ratio</h2>
               <DoughnutChart
                 labels={["Male", "Female"]}
-                data={[stats?.userRatio.male, stats?.userRatio.female]}
+                data={[stats?.userRatio?.male, stats?.userRatio.female]}
                 backgroundColor={[
                   "hsl(340,82%,56%)",
                   "hsl(82.91457286432161, 85.40772532188842%, 54.313725490196084%)",
