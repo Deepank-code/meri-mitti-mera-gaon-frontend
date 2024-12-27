@@ -17,8 +17,8 @@
   display: inline-block;
   width: 150px;
   padding: 10px;
-  background-color: #f7cece;
-  color: #eb5757;
+  background-color: #dff6db;
+  color: #56d93c;
   border-radius: 40px;
   text-align: center;
 }
@@ -26,21 +26,23 @@
   font-family: "Open Sans", sans-serif;
   font-weight: bolder;
   font-size: 72px;
-  line-height: 90px;
+  line-height: 80px;
+  margin-bottom: 0.5em;
 }
 .left-section > h2 > span {
-  color: #eb5757;
+  color: #3eeb61;
   font-weight: bolder;
   margin-top: 2em;
 }
 .get-started-btn {
   padding: 10px 25px;
-  border-radius: 10px;
-  font-size: 13px;
-  background-color: #eb5757;
+
+  font-size: 22px;
+  background-color: #7ceb57;
   color: white;
   border-radius: 30px;
   text-decoration: none;
+  transition: all 0.5s ease-in-out;
 }
 .right-section {
   position: relative;
@@ -59,10 +61,10 @@
   height: 600px;
 }
 .bg-icon {
+  position: absolute;
   width: 650px;
   height: 650px;
 
-  position: absolute;
   right: 5%;
   z-index: -1;
 }
@@ -73,17 +75,12 @@
   z-index: 1;
 }
 .eating-girl {
-  width: 900px;
   position: absolute;
+  width: 900px;
+
   top: -45%;
   left: -20%;
   transform: scale(0.57);
-}
-.pizza-widzet {
-  position: absolute;
-  bottom: -10%;
-  left: -15%;
-  transform: scale(0.6);
 }
 
 .products-section {
@@ -105,8 +102,8 @@
     width: 120px;
   }
   .left-section > h2 {
-    font-size: 62px;
-    line-height: 78px;
+    font-size: 50px;
+    line-height: 70px;
   }
 
   .get-started-btn {
@@ -144,9 +141,6 @@
     left: -40%;
     transform: scale(0.45);
   }
-  .pizza-widzet {
-    transform: scale(0.5);
-  }
 }
 @media only screen and (max-width: 768px) {
   .products-section {
@@ -170,10 +164,10 @@
   }
 
   .bg-icon {
-    width: 530px;
-    height: 530px;
-    top: 5%;
+    width: 550px;
+    height: 550px;
     right: 27%;
+    top: 10%;
   }
   .arrow-icon {
     right: 5%;
@@ -181,12 +175,9 @@
   }
   .eating-girl {
     position: absolute;
-    top: -19%;
-    left: -60%;
-    transform: scale(0.42);
-  }
-  .pizza-widzet {
-    transform: scale(0.5);
+    top: -50%;
+    left: -40%;
+    transform: scale(0.45);
   }
 }
 @media only screen and (max-width: 600px) {
@@ -199,80 +190,29 @@
     text-align: center;
     position: relative;
   }
-  .left-section > p#first-para {
-    display: inline-block;
-
-    width: 120px;
-    padding: 10px;
-    background-color: #f7cece;
-    color: #eb5757;
-    border-radius: 40px;
-    text-align: center;
-  }
-  .left-section > h2 {
-    font-family: "Open Sans", sans-serif;
-    font-weight: bolder;
-    font-size: 65px;
-    line-height: 90px;
-  }
-  .left-section > h2 > span {
-    color: #eb5757;
-    font-weight: bolder;
-  }
-  .get-started-btn {
-    padding: 10px 25px;
-    border-radius: 10px;
-    font-size: 12px;
-    background-color: #eb5757;
-    color: white;
-    border-radius: 30px;
-    text-decoration: none;
+  .parent-img-div {
+    width: 400px;
+    height: 400px;
   }
   .right-section {
     position: relative;
-    width: auto;
+    width: 100%;
     overflow: hidden;
   }
-  .clock_icon {
-    width: 100px;
-    height: 97px;
-    top: 10%;
-    position: absolute;
-  }
-  .parent-img-div {
-    position: relative;
-    width: 600px;
-    height: 500px;
-  }
   .bg-icon {
-    width: 690px;
-    height: 690px;
-
-    position: absolute;
-    top: -20%;
-    right: 10%;
-    z-index: -1;
-  }
-  .clock_icon {
-    width: 50px;
-    height: 57px;
-    top: 10%;
-    position: absolute;
+    width: 380px;
+    height: 380px;
+    right: 23%;
+    top: 5%;
   }
   .arrow-icon {
-    transform: scale(0.7);
     right: 5%;
-    top: 10%;
-    z-index: 1;
+    top: 0%;
   }
   .eating-girl {
-    top: -70%;
-    left: -34%;
-    transform: scale(0.5);
-  }
-  .pizza-widzet {
-    bottom: -10%;
-    left: -15%;
-    transform: scale(0.5);
+    position: absolute;
+    top: -120%;
+    left: -57%;
+    transform: scale(0.4);
   }
 }

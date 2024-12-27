@@ -32,10 +32,11 @@ const Home = () => {
           <div className="left-section">
             <p id="first-para">More Faster</p>
             <h2>
-              Be The Fastest In Delivering Your <span>Food</span>
+              From Village Farms to Your Table, Fresh, Pure, and 100%
+              <span> Organic</span>🌾
             </h2>
 
-            <Link to="#" className="get-started-btn">
+            <Link to="/search" className="get-started-btn">
               Get Started
             </Link>
           </div>
@@ -44,7 +45,6 @@ const Home = () => {
             <div className="parent-img-div">
               <img className="bg-icon" src="images/bg-circle.png" />
               <img className="eating-girl" src="images/eating-girl.png" />
-              <img className="pizza-widzet" src="images/pizza-wid.png" />
             </div>
 
             <img className="arrow-icon" src="images/arrow.png" />

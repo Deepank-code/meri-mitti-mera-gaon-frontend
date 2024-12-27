@@ -111,7 +111,7 @@ const Search = () => {
                 return (
                   <ProductCard
                     key={i._id}
-                    productID={i._id}
+                    productId={i._id}
                     price={i.price}
                     stock={i.stock}
                     name={i.name}

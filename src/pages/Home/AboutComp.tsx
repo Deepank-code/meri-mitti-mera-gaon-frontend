@@ -1,4 +1,3 @@
-import React from "react";
 import "./aboutComp.css";
 const AboutComp = () => {
   return (
@@ -9,11 +8,13 @@ const AboutComp = () => {
       </div>
       <div className="about-left-section">
         <h5 className="py-4">WHAT THEY SAY</h5>
-        <h2 className="my-5">What Our Customers Say About Us</h2>
+        <h2 className="my-5">"Pure, Fresh, and Straight from the Farm 🌾</h2>
         <p>
-          “Let's eat is the best. Besides the many and delicious meals, the
-          service is also very good, especially in the very fast delivey. I
-          highly recommend Let's eat to you”.
+          Discover the essence of true organic living with our handpicked
+          products, sourced directly from village farms where nature thrives.
+          Every item is carefully selected to ensure unmatched purity,
+          exceptional quality, and freshness you can trust. From our farms to
+          your home, experience the difference of farm-to-table goodness!"
         </p>
       </div>
     </div>

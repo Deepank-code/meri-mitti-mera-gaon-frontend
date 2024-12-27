@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const NotFound = () => {
   return (
     <section className="page_404">
@@ -14,9 +16,9 @@ const NotFound = () => {
 
                   <p>The page you are looking for not avaible!</p>
 
-                  <a href="" className="link_404">
+                  <Link to="/" className="link_404">
                     Go to Home
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
