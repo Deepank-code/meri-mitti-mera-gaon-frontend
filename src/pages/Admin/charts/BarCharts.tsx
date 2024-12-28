@@ -12,7 +12,8 @@ const { last6Months, last12Months } = getLastMonth();
 
 const BarCharts = () => {
   const { user } = useSelector((state: RootState) => state.userReducer);
-  const { isLoading, data, isError, error } = useBarQuery(user._id);
+
+  const { isLoading, data, isError, error } = useBarQuery(user!._id);
   const products = data?.charts.products || [];
   const orders = data?.charts.orders || [];
   const users = data?.charts.users || [];

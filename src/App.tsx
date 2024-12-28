@@ -1,9 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useNavigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { lazy, Suspense, useEffect } from "react";
 import Loader from "./Components/Loader";
@@ -11,7 +6,7 @@ import PieChart from "./pages/Admin/charts/PieCharts.tsx";
 import LineChart from "./pages/Admin/charts/LineCharts.tsx";
 import Header from "./pages/Layout/Header.tsx";
 import { Toaster } from "react-hot-toast";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase.tsx";
 import { useDispatch, useSelector } from "react-redux";
 import { userExist, userNotExist } from "./redux/reducer/userReducer.ts";
@@ -26,7 +21,7 @@ const Login = lazy(() => import("./pages/Login.tsx"));
 const Search = lazy(() => import("./pages/Search.tsx"));
 const Orders = lazy(() => import("./pages/Orders.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
-const Checkout = lazy(() => import("./pages/checkout.tsx"));
+const Checkout = lazy(() => import("./pages/Checkout.tsx"));
 
 // admin routes
 const Dashboard = lazy(() => import("./pages/Admin/Dashboard.tsx"));
@@ -49,6 +44,7 @@ function App() {
   const { user, loading } = useSelector(
     (state: { userReducer: UserReducerInitalStateType }) => state.userReducer
   );
+  // signOut(auth);
 
   const dispatch = useDispatch();
   useEffect(() => {

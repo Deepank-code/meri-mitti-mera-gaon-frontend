@@ -11,7 +11,7 @@ import { getLastMonth } from "../../../utils/feature";
 const { last12Months } = getLastMonth();
 const LineCharts = () => {
   const { user } = useSelector((state: RootState) => state.userReducer);
-  const { isLoading, data, isError, error } = useLineQuery(user._id);
+  const { isLoading, data, isError, error } = useLineQuery(user!._id);
   const products = data?.charts.products || [];
   const discount = data?.charts.discount || [];
 

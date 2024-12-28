@@ -12,6 +12,7 @@ import {
 import { RootState } from "../../../redux/store";
 import { Skleton } from "../../../Components/Loader";
 import { responseToast } from "../../../utils/feature";
+
 const orderItems: any[] = [];
 const defaultData = {
   shippingInfo: {
@@ -20,6 +21,8 @@ const defaultData = {
     state: "",
     country: "",
     pinCode: 0,
+
+    
   },
   status: "",
   subTotal: 0,
@@ -39,7 +42,7 @@ const Transactionmanagement = () => {
   const navigate = useNavigate();
 
   const { user } = useSelector((state: RootState) => state.userReducer);
-  const { isLoading, data, isError, error } = useOrdersDetailsQuery(params.id!);
+  const { isLoading, data, isError } = useOrdersDetailsQuery(params.id!);
 
   const {
     shippingInfo: { address, city, state, country, pinCode },
@@ -58,15 +61,15 @@ const Transactionmanagement = () => {
 
   const updateHandler = async () => {
     const res = await updateOrder({
-      userId: user?._id!,
-      orderId: data?.order._id!,
+      userId: user!._id,
+      orderId: data!.order._id,
     });
     responseToast(res, navigate, "/admin/transaction");
   };
   const deleteHandler = async () => {
     const res = await deleteOrder({
-      userId: user?._id!,
-      orderId: data?.order._id!,
+      userId: user!._id,
+      orderId: data!.order._id,
     });
     responseToast(res, navigate, "/admin/transaction");
   };

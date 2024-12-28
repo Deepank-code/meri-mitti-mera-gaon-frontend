@@ -45,7 +45,7 @@ const arr: [] = [];
 
 const Transaction = () => {
   const { user } = useSelector((state: RootState) => state.userReducer);
-  const { isLoading, data, isError, error } = useAllOrdersQuery(user?._id!);
+  const { isLoading, data, isError, error } = useAllOrdersQuery(user!._id!);
   const [rows, setRows] = useState<DataType[]>(arr);
   console.log(data);
   if (isError) {

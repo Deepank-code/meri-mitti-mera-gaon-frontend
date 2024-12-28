@@ -78,15 +78,15 @@ const ProductManagement = () => {
     if (photoFile) formData.set("photo", photoFile);
     const res = await updateProduct({
       formData,
-      userId: user?._id!,
-      productId: data?.product._id!,
+      userId: user!._id,
+      productId: data!.product._id,
     });
     responseToast(res, navigate, "/admin/products");
   };
   const deleteHandler = async () => {
     const res = await deleteProduct({
-      userId: user?._id!,
-      productId: data?.product._id!,
+      userId: user!._id,
+      productId: data!.product._id,
     });
     responseToast(res, navigate, "/admin/products");
   };

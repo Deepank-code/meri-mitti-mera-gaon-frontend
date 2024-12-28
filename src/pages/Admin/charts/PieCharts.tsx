@@ -8,7 +8,7 @@ import { usePieQuery } from "../../../redux/api/dashboardApi";
 import { RootState } from "../../../redux/store";
 const PieCharts = () => {
   const { user } = useSelector((state: RootState) => state.userReducer);
-  const { isLoading, data, isError } = usePieQuery(user._id);
+  const { isLoading, data, isError } = usePieQuery(user!._id);
   if (isError) {
     return <Navigate to={"/admin/dashboard"} />;
   }
@@ -28,9 +28,9 @@ const PieCharts = () => {
               <PieChart
                 labels={["Processing", "Shipped", "delivered"]}
                 data={[
-                  charts?.orderFullFillment.processing,
-                  charts?.orderFullFillment.shipping,
-                  charts?.orderFullFillment.delivered,
+                  charts!.orderFullFillment.processing!,
+                  charts!.orderFullFillment.shipping!,
+                  charts!.orderFullFillment.delivered!,
                 ]}
                 backgroundColor={categories.map(
                   (i) => `hsl(${i.value * 4},${i.value}%,50%)`
@@ -44,10 +44,10 @@ const PieCharts = () => {
           <section>
             <div>
               <DoughnutChart
-                labels={charts?.productCategoriesRatio.map(
+                labels={charts!.productCategoriesRatio.map(
                   (i) => Object.keys(i)[0]
                 )}
-                data={charts?.productCategoriesRatio.map(
+                data={charts!.productCategoriesRatio.map(
                   (i) => Object.values(i)[0]
                 )}
                 backgroundColor={categories.map(
@@ -64,8 +64,8 @@ const PieCharts = () => {
               <DoughnutChart
                 labels={["In Stock", "out of Stock"]}
                 data={[
-                  charts?.stockAvailablity.inStock,
-                  charts?.stockAvailablity.outOfStock,
+                  charts!.stockAvailablity.inStock,
+                  charts!.stockAvailablity.outOfStock,
                 ]}
                 backgroundColor={[`hsl(260,80%,40%)`, `hsl(220,70%,45%)`]}
                 legends={false}
@@ -86,11 +86,11 @@ const PieCharts = () => {
                   "net Margin",
                 ]}
                 data={[
-                  charts?.revenueDistribution.marketingCost,
-                  charts?.revenueDistribution.discount,
-                  charts?.revenueDistribution.burnt,
-                  charts?.revenueDistribution.productionCost,
-                  charts?.revenueDistribution.netMargin,
+                  charts!.revenueDistribution.marketingCost,
+                  charts!.revenueDistribution.discount,
+                  charts!.revenueDistribution.burnt,
+                  charts!.revenueDistribution.productionCost,
+                  charts!.revenueDistribution.netMargin,
                 ]}
                 backgroundColor={[
                   `hsl(260,80%,40%)`,
@@ -111,8 +111,8 @@ const PieCharts = () => {
               <DoughnutChart
                 labels={["Admin", "Customers"]}
                 data={[
-                  charts?.adminCustomer.admin,
-                  charts?.adminCustomer.customer,
+                  charts!.adminCustomer.admin,
+                  charts!.adminCustomer.customer,
                 ]}
                 backgroundColor={[`hsl(335,100%,38%)`, `hsl(44,98%,50%)`]}
                 offset={[0, 80]}
@@ -125,9 +125,9 @@ const PieCharts = () => {
               <DoughnutChart
                 labels={["Adult", "Teen", "old"]}
                 data={[
-                  charts?.userAgeGroup.adult,
-                  charts?.userAgeGroup.teen,
-                  charts?.userAgeGroup.old,
+                  charts!.userAgeGroup.adult,
+                  charts!.userAgeGroup.teen,
+                  charts!.userAgeGroup.old,
                 ]}
                 backgroundColor={[
                   `hsl(335,100%,38%)`,

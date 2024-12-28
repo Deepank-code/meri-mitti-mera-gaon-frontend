@@ -8,7 +8,6 @@ import {
   Title,
   Tooltip,
   Legend,
-  plugins,
   ArcElement,
   ChartData,
   Filler,
@@ -72,7 +71,7 @@ export const BarChart = ({
     datasets: [
       {
         label: title_1,
-        data: data_1,
+        data: data_1!,
         backgroundColor: bgColor_1,
         barThickness: "flex",
         categoryPercentage: 0.4,
@@ -81,7 +80,7 @@ export const BarChart = ({
       },
       {
         label: title_2,
-        data: data_2,
+        data: data_2!,
         backgroundColor: bgColor_2,
         barThickness: "flex",
         categoryPercentage: 0.4,
@@ -105,6 +104,7 @@ export const DoughnutChart = ({
   labels,
   data,
   backgroundColor,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   cutout,
   legends = true,
   offset,

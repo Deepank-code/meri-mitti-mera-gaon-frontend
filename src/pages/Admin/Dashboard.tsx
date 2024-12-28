@@ -33,7 +33,7 @@ export const userPhoto =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgF2suM5kFwk9AdFjesEr8EP1qcyUvah8G7w&s";
 const Dashboard = () => {
   const { user } = useSelector((state: RootState) => state.userReducer);
-  const { isLoading, data, isError } = useStatsQuery(user?._id);
+  const { isLoading, data, isError } = useStatsQuery(user!._id);
 
   const stats = data?.stats;
   const [randomQuote, setRandomQuote] = useState<string>("hello");
@@ -131,7 +131,7 @@ const Dashboard = () => {
               <h2>Gender Ratio</h2>
               <DoughnutChart
                 labels={["Male", "Female"]}
-                data={[stats?.userRatio?.male, stats?.userRatio.female]}
+                data={[stats!.userRatio.male, stats!.userRatio.female]}
                 backgroundColor={[
                   "hsl(340,82%,56%)",
                   "hsl(82.91457286432161, 85.40772532188842%, 54.313725490196084%)",
@@ -142,7 +142,7 @@ const Dashboard = () => {
                 <BiMaleFemale />
               </p>
             </div>
-            <DashboardTable data={stats?.latestTransaction!} />
+            <DashboardTable data={stats!.latestTransaction} />
           </section>
         </main>
       )}
@@ -168,13 +168,13 @@ const WidgetItem = ({
       <div className="widgetInfo">
         <p>{heading}</p>
         <h4>{amount ? `${value}` : value}</h4>
-        {percent > 0 ? (
+        {percent! > 0 ? (
           <span className="green">
-            <HiTrendingUp />+{`${percent > 10000 ? 9999 : percent}`}%
+            <HiTrendingUp />+{`${percent! > 10000 ? 9999 : percent}`}%
           </span>
         ) : (
           <span className="red">
-            <HiTrendingDown />-{`${percent < -10000 ? -9999 : percent}`}%
+            <HiTrendingDown />-{`${percent! < -10000 ? -9999 : percent}`}%
           </span>
         )}
       </div>
@@ -182,13 +182,13 @@ const WidgetItem = ({
         className="widgitCircle"
         style={{
           backgroundImage: `conic-gradient(${color} ${Math.abs(
-            (percent / 100) * 320
+            (percent! / 100) * 320
           )}deg,rgb(255,255,255) 0)`,
         }}
       >
         <span style={{ color }}>
-          {percent > 0 && `${percent > 10000 ? 9999 : percent}`}%
-          {percent < 0 && `${percent < -10000 ? -9999 : percent}`}%
+          {percent! > 0 && `${percent! > 10000 ? 9999 : percent}`}%
+          {percent! < 0 && `${percent! < -10000 ? -9999 : percent}`}%
         </span>
       </div>
     </article>

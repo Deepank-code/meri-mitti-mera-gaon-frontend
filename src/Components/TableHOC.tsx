@@ -10,7 +10,7 @@ import {
   usePagination,
 } from "react-table";
 
-const TableHOC = <T extends Object>(
+const TableHOC = <T extends object>(
   columns: Column<T>[],
   data: T[],
   containerClassname: string,
