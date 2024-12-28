@@ -12,7 +12,7 @@ import {
 import { RootState } from "../../../redux/store";
 import { Skleton } from "../../../Components/Loader";
 import { responseToast } from "../../../utils/feature";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// @ts-expect-error :dfsgf
 const orderItems: any[] = [];
 const defaultData = {
   shippingInfo: {

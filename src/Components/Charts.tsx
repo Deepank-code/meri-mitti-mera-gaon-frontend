@@ -104,7 +104,7 @@ export const DoughnutChart = ({
   labels,
   data,
   backgroundColor,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // @ts-expect-error :dfsgf
   cutout,
   legends = true,
   offset,
