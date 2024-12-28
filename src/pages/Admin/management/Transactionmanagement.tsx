@@ -12,7 +12,7 @@ import {
 import { RootState } from "../../../redux/store";
 import { Skleton } from "../../../Components/Loader";
 import { responseToast } from "../../../utils/feature";
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const orderItems: any[] = [];
 const defaultData = {
   shippingInfo: {
@@ -21,8 +21,6 @@ const defaultData = {
     state: "",
     country: "",
     pinCode: 0,
-
-    
   },
   status: "",
   subTotal: 0,
