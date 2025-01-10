@@ -6,7 +6,7 @@ import PieChart from "./pages/Admin/charts/PieCharts.tsx";
 import LineChart from "./pages/Admin/charts/LineCharts.tsx";
 import Header from "./pages/Layout/Header.tsx";
 import { Toaster } from "react-hot-toast";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase.tsx";
 import { useDispatch, useSelector } from "react-redux";
 import { userExist, userNotExist } from "./redux/reducer/userReducer.ts";
@@ -44,7 +44,6 @@ function App() {
   const { user, loading } = useSelector(
     (state: { userReducer: UserReducerInitalStateType }) => state.userReducer
   );
-  // signOut(auth);
 
   const dispatch = useDispatch();
   useEffect(() => {

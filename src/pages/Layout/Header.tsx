@@ -22,6 +22,7 @@ import { CartReducerInitalStateType } from "../../types/reducer-type";
 interface PropTypes {
   user: User | null;
 }
+
 const Header = ({ user }: PropTypes) => {
   const [IsOpen, setIsOpen] = useState<boolean>(false);
   const [isLinksModalOpen, setisLinksModalOpen] = useState<boolean>(true);
@@ -89,8 +90,11 @@ const Header = ({ user }: PropTypes) => {
             </NavLink>
             <NavLink to={"/cart"}>
               {!loading && (
-                <span className="item-in-cart" value={cartItems.length}></span>
-              )}{" "}
+                <span
+                  className="item-in-cart"
+                  data-value={cartItems.length}
+                ></span>
+              )}
               <FaCartShopping />
             </NavLink>
             {user?._id ? (

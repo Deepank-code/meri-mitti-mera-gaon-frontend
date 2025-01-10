@@ -112,7 +112,11 @@ const ProductManagement = () => {
           <>
             <section>
               <strong>ID -{data?.product && data?.product._id}</strong>
-              <img src={`${photo!.url}}`} alt="pro" />
+              {typeof photo === "object" && "url" in photo ? (
+                <img src={photo.url} alt="Product" />
+              ) : (
+                <p>No image available</p>
+              )}
               <p>{name}</p>
               <h2>₹{price}</h2>
               {stock > 0 ? (
