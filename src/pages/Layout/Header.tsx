@@ -89,8 +89,8 @@ const Header = ({ user }: PropTypes) => {
             </NavLink>
             <NavLink to={"/cart"}>
               {!loading && (
-                <span className="item-in-cart">{cartItems.length}</span>
-              )}
+                <span className="item-in-cart" value={cartItems.length}></span>
+              )}{" "}
               <FaCartShopping />
             </NavLink>
             {user?._id ? (

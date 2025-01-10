@@ -106,17 +106,32 @@ const Transactionmanagement = () => {
               </button>
               <h1>Order Info</h1>
               <h5>User Info</h5>
-              <p>Name: {name}</p>
               <p>
-                Address: {`${address},${city},${state},${country},${pinCode}`}{" "}
+                <b>Name:</b>
+                {name}
+              </p>
+              <p>
+                <b>Address:</b>
+                {`${address},${city},${state},${country},${pinCode}`}{" "}
               </p>
 
               <h5>Amount Info</h5>
-              <p>SubTotal: {subTotal}</p>
-              <p>Shipping Charges: {shippingCharges}</p>
-              <p>Tax: {tax}</p>
-              <p>Discount: {discount}</p>
-              <p>Total: {total}</p>
+              <p>
+                <b>SubTotal:</b> <span> {subTotal}</span>
+              </p>
+              <p>
+                <b>Shipping Charges: </b>
+                <span> {shippingCharges}</span>
+              </p>
+              <p>
+                <b>Tax:</b> <span>{tax} </span>
+              </p>
+              <p>
+                <b>Discount:</b> <span> {discount}</span>
+              </p>
+              <p>
+                <b className="green">Total:</b> <span> {total}</span>
+              </p>
 
               <h5>Status Info</h5>
               <p>

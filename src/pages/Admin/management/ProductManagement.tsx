@@ -9,7 +9,7 @@ import {
   useUpdateProductMutation,
 } from "../../../redux/api/productApi";
 import { useNavigate, useParams } from "react-router-dom";
-import { server } from "../../../redux/store";
+
 import { Skleton } from "../../../Components/Loader";
 import { responseToast } from "../../../utils/feature";
 import { FaTrash } from "react-icons/fa";
@@ -112,7 +112,7 @@ const ProductManagement = () => {
           <>
             <section>
               <strong>ID -{data?.product && data?.product._id}</strong>
-              <img src={`${server}${photo}`} alt="pro" />
+              <img src={`${photo!.url}}`} alt="pro" />
               <p>{name}</p>
               <h2>₹{price}</h2>
               {stock > 0 ? (

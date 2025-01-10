@@ -34,8 +34,22 @@
     align-items: center;
     padding: 0;
     background-repeat: repeat;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    > article {
+      max-width: 380px;
+    }
+    > article > p > span {
+      float: right;
+    }
     > section {
-      max-width: 400px;
+      max-width: 380px;
+      height: auto;
+      > img {
+        @include square(70%);
+        width: 100%;
+        object-fit: cover;
+      }
     }
   }
   .greeting-section {

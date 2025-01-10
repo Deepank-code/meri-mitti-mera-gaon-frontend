@@ -16,7 +16,7 @@
   > aside {
     width: 30%;
     padding: 4rem;
-    @include flex(column, center, stretch, 1.5rem);
+    @include flex(column, center, stretch, 0.7rem);
     > input {
       padding: 1rem;
       border: 1px solid rgba(0, 0, 0, 0.2);
@@ -26,12 +26,24 @@
     }
     > p {
       font-size: 1.1rem;
+      font-weight: 600;
+      color: rgb(149, 149, 149);
+      > span {
+        float: right;
+      }
+    }
+    p:last-of-type {
+      color: rgb(89, 229, 101);
+      font-weight: 900;
+    }
+    #deduction {
+      color: #ff483b;
     }
     > a {
-      background-color: aliceblue;
+      background-color: rgb(55, 164, 63);
       padding: 1rem;
       text-decoration: none;
-      color: aqua;
+      color: rgb(255, 255, 255);
       @include flex(row);
       text-transform: uppercase;
       letter-spacing: 2px;
@@ -52,26 +64,30 @@
 }
 
 .cart-item {
-  padding: 2rem;
+  padding: 1rem;
   @include flex(row, flex-start, center, 3rem);
   margin: 1em;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 10px;
   > img {
-    @include square(7rem);
+    @include square(4rem);
     object-fit: contain;
+    border-radius: 7px;
   }
   > article {
     @include flex(column, center, flex-start, 0.25rem);
     a {
       font-size: 1.2rem;
-      color: black;
+      color: rgb(102, 102, 102);
+
+      font-weight: 800;
       &:hover {
         color: cadetblue;
       }
     }
     span {
       font-weight: 700;
+      color: #ff483b;
     }
   }
   > div {

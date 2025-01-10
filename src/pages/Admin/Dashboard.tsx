@@ -33,6 +33,7 @@ export const userPhoto =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgF2suM5kFwk9AdFjesEr8EP1qcyUvah8G7w&s";
 const Dashboard = () => {
   const { user } = useSelector((state: RootState) => state.userReducer);
+
   const { isLoading, data, isError } = useStatsQuery(user!._id);
 
   const stats = data?.stats;
@@ -55,11 +56,20 @@ const Dashboard = () => {
             <BsSearch />
             <input type="text" placeholder="Search for data,users" />
             <FaRegBell />
-            <img src={user?.photo || userPhoto} alt="user" loading="lazy" />
+            <img src={user?.photo ? user?.photo : userPhoto} alt="user" />
           </div>
 
           <section className="greeting-section">
-            <img src={user?.photo || userPhoto} alt="se" loading="lazy" />
+            <iframe
+              src={user?.photo}
+              style={{
+                width: "96px",
+                height: "96px",
+                border: "none",
+                borderRadius: "50%",
+              }}
+              title="User Photo"
+            />
             <div>
               <h1>Hey Deepank! {greetTime()}</h1>
               <p>{randomQuote}</p>

@@ -1,6 +1,8 @@
 .shipping {
   @include flex(row);
-
+  background-image: url("/images/shipping.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   .back-btn {
     @include square(2.5rem);
     background-color: black;
@@ -23,7 +25,7 @@
   > form {
     max-width: 450px;
     width: 100%;
-    @include flex(column, center, stretch, 2rem);
+    @include flex(column, center, stretch, 1.5rem);
     padding: 2rem;
 
     > h1 {

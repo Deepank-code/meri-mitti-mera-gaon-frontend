@@ -80,6 +80,12 @@ const AdminSideBar = () => {
                 Transaction
               </NavLink>
             </li>
+            <li>
+              <NavLink to={"/admin/app/coupon"} className="sidebar-link">
+                <RiCoupon3Fill />
+                Create Coupon
+              </NavLink>
+            </li>
           </ul>
         </div>
         {/* div 2---- */}
@@ -107,29 +113,7 @@ const AdminSideBar = () => {
           </ul>
         </div>
         {/* div 3---- */}
-        <div>
-          <h5>Apps</h5>
-          <ul>
-            <li>
-              <NavLink to={"/admin/app/stopwatch"} className="sidebar-link">
-                <FaStopwatch />
-                Stop-watch
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to={"/admin/app/coupon"} className="sidebar-link">
-                <RiCoupon3Fill />
-                Coupon
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to={"/admin/app/toss"} className="sidebar-link">
-                <FaGamepad />
-                Toss
-              </NavLink>
-            </li>
-          </ul>
-        </div>
+
         {showModal ? (
           <button id="close-modal-btn" onClick={() => setShowModal(false)}>
             Close

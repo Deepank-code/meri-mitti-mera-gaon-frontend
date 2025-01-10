@@ -72,6 +72,7 @@ const Search = () => {
           <input
             type="range"
             min={10}
+            max={10000}
             value={maxPrice}
             onChange={(e) => setMaxPrice(Number(e.target.value))}
           />
@@ -115,7 +116,7 @@ const Search = () => {
                     price={i.price}
                     stock={i.stock}
                     name={i.name}
-                    photo={i.photo}
+                    photo={i.photo.url}
                     handler={addTocartHandler}
                   />
                 );

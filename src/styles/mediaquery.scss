@@ -102,6 +102,111 @@
       }
     }
   }
+  .cart {
+    padding: 2rem 1rem;
+    @include flex(column, stretch, center, 1rem);
+    height: 100%;
+    > main {
+      width: 100%;
+      > h1 {
+        @include heading(2px);
+        text-align: center;
+      }
+      overflow-y: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+    > aside {
+      width: 100%;
+      padding: 1em;
+      @include flex(column, center, stretch, 1.5rem);
+      > input {
+        padding: 1rem;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        outline: none;
+        border-radius: 5px;
+        margin-top: 2rem;
+      }
+      > p {
+        font-size: 1.1rem;
+      }
+      > a {
+        background-color: aliceblue;
+        padding: 1rem;
+        text-decoration: none;
+        color: aqua;
+        @include flex(row);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border-radius: 5px;
+        &hover {
+          opacity: 0.8;
+        }
+      }
+      > span {
+        margin-top: -1rem;
+        @include flex(row, center, center, 5px);
+        > code {
+          font-weight: 900;
+          align-self: flex-end;
+        }
+      }
+    }
+  }
+
+  .cart-item {
+    padding: 1rem;
+    @include flex(row, flex-start, center, 3rem);
+    margin: 1em;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+    > img {
+      @include square(3rem);
+      object-fit: contain;
+    }
+    > article {
+      @include flex(column, center, flex-start, 0.25rem);
+      a {
+        font-size: 1.2rem;
+        color: rgb(78, 78, 78);
+        font-weight: 800;
+        &:hover {
+          color: cadetblue;
+        }
+      }
+      span {
+        font-weight: 700;
+        color: #f80000;
+      }
+    }
+    > div {
+      margin-left: auto;
+      @include flex(row);
+      button {
+        border: none;
+        @include square(1.5rem);
+        border-radius: 5px;
+        @include flex(row);
+        cursor: pointer;
+        font-size: 1.2rem;
+        &:hover {
+          background-color: #fff;
+          color: cyan;
+        }
+      }
+    }
+    > button {
+      border: none;
+      background-color: transparent;
+      @include flex(row);
+      cursor: pointer;
+      font-size: 1rem;
+      &:hover {
+        color: red;
+      }
+    }
+  }
 }
 @media screen and (width<=600px) {
   .header {
@@ -148,7 +253,44 @@
       }
     }
   }
+  .table {
+    border: 0;
+  }
 
+  .table thead {
+    display: none;
+  }
+
+  .table tbody tr {
+    display: block;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .table tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 0;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .table tbody td[data-label]::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #555;
+    flex-shrink: 0;
+    margin-right: 10px;
+    text-transform: uppercase;
+  }
+
+  .table tbody td:last-child {
+    border-bottom: 0;
+  }
   .product-search-page {
     padding: 1rem;
     @include flex(column, flex-start, stretch, 2rem);
@@ -209,7 +351,117 @@
       }
     }
   }
+  .cart {
+    padding: 2rem 1rem;
+    @include flex(column, stretch, center, 1rem);
+    height: 100%;
+    > main {
+      width: 100%;
+      > h1 {
+        @include heading(2px);
+        text-align: center;
+      }
+      overflow-y: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+    > aside {
+      width: 100%;
+      padding: 1em;
+      @include flex(column, center, stretch, 0.7rem);
+      > input {
+        padding: 1rem;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        outline: none;
+        border-radius: 5px;
+        margin-top: 2rem;
+      }
+      > p {
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+      > a {
+        background-color: aliceblue;
+        padding: 1rem;
+        text-decoration: none;
+        color: aqua;
+        @include flex(row);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border-radius: 5px;
+        &hover {
+          opacity: 0.8;
+        }
+      }
+      > span {
+        margin-top: -1rem;
+        @include flex(row, center, center, 5px);
+        > code {
+          font-weight: 900;
+          align-self: flex-end;
+        }
+      }
+    }
+  }
 
+  .cart-item {
+    padding: 0.8rem;
+    @include flex(row, flex-start, center, 1rem);
+    margin: 1em;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+    > img {
+      @include square(3rem);
+      border-radius: 6px;
+      object-fit: contain;
+    }
+    > article {
+      @include flex(column, center, flex-start, 0.25rem);
+      a {
+        font-size: 1rem;
+        color: rgb(78, 78, 78);
+        font-weight: 800;
+        &:hover {
+          color: cadetblue;
+        }
+      }
+      span {
+        font-weight: 700;
+        color: #f80000;
+        font-size: 14px;
+      }
+    }
+    > div {
+      margin-left: auto;
+      @include flex(row);
+      > p {
+        font-size: 0.8rem;
+      }
+      button {
+        border: none;
+        @include square(1.2rem);
+        border-radius: 5px;
+        @include flex(row);
+        cursor: pointer;
+        font-size: 1rem;
+        &:hover {
+          background-color: #fff;
+          color: cyan;
+        }
+      }
+    }
+    > button {
+      border: none;
+      background-color: transparent;
+      @include flex(row);
+      cursor: pointer;
+      font-size: 1rem;
+      &:hover {
+        color: red;
+      }
+    }
+  }
   //productcard
   .productCard {
     width: 100%;
@@ -300,59 +552,3 @@
     }
   }
 }
-
-// .header {
-//   @include flex(row, space-between, center, unset);
-
-//   height: auto;
-//   margin: auto 2em;
-//   > div > img {
-//     width: 90px;
-//     height: 90px;
-//   }
-//   > div {
-//     @include flex(row, center, center, unset);
-//   }
-//   > div > .name-logo {
-//     height: 50px;
-//     float: right;
-//     vertical-align: middle;
-//   }
-//   > .nav-links {
-//     @include flex(row, unset, unset, 1.6rem);
-//     > a {
-//       color: rgb(0, 0, 0);
-//       letter-spacing: 2px;
-//       font-size: 1.2rem;
-//       transition: padding 0.5s;
-//     }
-//     .active {
-//       padding-left: 0.7em;
-//       padding-right: 0.7em;
-//       background-color: rgb(56, 255, 73);
-//       border-radius: 10px;
-//       color: #ffffff;
-//     }
-//     button {
-//       border: none;
-//       font-size: 1.2rem;
-//       cursor: pointer;
-//       background-color: transparent;
-//       &:hover {
-//         color: rgb(36, 245, 60);
-//       }
-//     }
-//     dialog {
-//       border: 1px solid #ccc;
-//       border-radius: 5px;
-//       padding: 10px;
-//       width: 100px;
-//       position: absolute;
-//       left: calc(100% - 100px);
-//       top: 0%;
-//       > div {
-//         @include flex(column, flex-start, center, 0.25rem);
-//       }
-//     }
-//   }
-// }

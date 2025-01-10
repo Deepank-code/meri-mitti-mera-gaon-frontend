@@ -23,11 +23,7 @@ const ProductCard = ({
 }: ProductPropType) => {
   return (
     <div className="productCard">
-      <img
-        src={`${import.meta.env.VITE_SERVER}${photo}`}
-        width="200px"
-        alt="meal.name"
-      />
+      <img src={photo} width="200px" alt="meal.name" />
 
       <p>{name}</p>
 

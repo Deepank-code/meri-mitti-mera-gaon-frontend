@@ -40,7 +40,9 @@ const Cart = () => {
     const timeOutId = setTimeout(() => {
       axios
         .get(
-          `http://localhost:8000/api/v1/payment/discount?coupon=${couponCode}`,
+          `${
+            import.meta.env.VITE_SERVER
+          }api/v1/payment/discount?coupon=${couponCode}`,
           {
             cancelToken,
           }
@@ -83,17 +85,29 @@ const Cart = () => {
         )}
       </main>
       <aside>
-        <p>SubTotal: ₹{subTotal}</p>
-        <p>Shipping charges: ₹{shippingCharges}</p>
-        <p>Tax: ₹{tax}</p>
         <p>
-          Discount -<em>{discount}</em>
+          SubTotal: <span>₹{subTotal}</span>
         </p>
+        <hr />
+        <p id="deduction">
+          Shipping charges: <span>₹{shippingCharges}</span>
+        </p>
+        <hr />
+        <p id="deduction">
+          Tax:<span>₹{tax}</span>{" "}
+        </p>
+        <hr />
         <p>
-          <b>Total: {total}</b>
+          Discount -<span>{discount}</span>
+          <em></em>
+        </p>
+        <hr />
+        <p>
+          Total:<span>₹{total}</span>
         </p>
         <input
           type="text"
+          placeholder="Coupon Code..."
           value={couponCode}
           onChange={(e) => setCoupnCode(e.target.value)}
         />
