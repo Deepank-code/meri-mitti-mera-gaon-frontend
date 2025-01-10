@@ -92,7 +92,7 @@ const Header = ({ user }: PropTypes) => {
               {!loading && (
                 <span
                   className="item-in-cart"
-                  data-value={cartItems.length}
+                  data-text={cartItems.length}
                 ></span>
               )}
               <FaCartShopping />

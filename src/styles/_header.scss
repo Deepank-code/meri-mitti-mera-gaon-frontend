@@ -29,7 +29,7 @@
   // }
 
   .item-in-cart:after {
-    content: attr(value);
+    content: attr(data-text);
     position: relative;
     font-size: 12px;
     color: #fff;
