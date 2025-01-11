@@ -253,6 +253,20 @@
       }
     }
   }
+  .checkout-container {
+    width: 100%;
+    height: auto;
+
+    > form {
+      @include flex(column, flex-start, stretch, 2rem);
+      margin: 5em 2em;
+      > button {
+        @include btn(1rem, rgb(56, 255, 73), #ffffff);
+        width: 90%;
+        font-size: 1.1rem;
+      }
+    }
+  }
   .table {
     border: 0;
   }
@@ -382,10 +396,10 @@
         font-weight: 600;
       }
       > a {
-        background-color: aliceblue;
+        background-color: rgb(56, 250, 79);
         padding: 1rem;
         text-decoration: none;
-        color: aqua;
+        color: rgb(255, 255, 255);
         @include flex(row);
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -488,7 +502,7 @@
   }
   .productCard > div > span {
     margin: 0.5vmax;
-    font: 300 13px;
+    font: 300 16px;
   }
   .productCard > p {
     font-size: 18px;
@@ -536,9 +550,6 @@
     transform: translateY(-1em);
   }
   @media screen and (max-width: 600px) {
-    .productCard > p {
-      font-size: 12px;
-    }
     .productCard > div {
       margin: 0;
       display: block;

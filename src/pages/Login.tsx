@@ -59,8 +59,9 @@ const Login = () => {
           </select>
         </div>
         <div>
-          <label htmlFor="gender">Gender</label>
+          <label htmlFor="dob">Date of birth</label>
           <input
+            id="dob"
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}

@@ -1,7 +1,8 @@
 .shipping {
   @include flex(row);
-  background-image: url("/images/shipping.jpg");
-  background-repeat: no-repeat;
+  background-image: url("../assets/bg-images/bg2.jpg");
+
+  background-repeat: repeat;
   background-size: cover;
   .back-btn {
     @include square(2.5rem);
@@ -24,9 +25,17 @@
   }
   > form {
     max-width: 450px;
-    width: 100%;
+    width: 90%;
+    height: auto;
     @include flex(column, center, stretch, 1.5rem);
     padding: 2rem;
+    margin: 2em 1em;
+    background: rgba(255, 255, 255, 0.37);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8.5px);
+    -webkit-backdrop-filter: blur(8.5px);
+    border: 1px solid rgba(255, 255, 255, 0.46);
 
     > h1 {
       @include heading(2px);

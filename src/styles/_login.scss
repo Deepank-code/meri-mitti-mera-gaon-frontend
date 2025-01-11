@@ -4,8 +4,8 @@
   object-fit: cover;
   @include flex(column);
   > main {
-    width: 100%;
-    height: 80%;
+    width: 95%;
+    height: auto;
     max-width: 400px;
     padding: 2rem;
     @include boxShadow;
