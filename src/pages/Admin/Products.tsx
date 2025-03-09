@@ -47,7 +47,7 @@ const Products = () => {
 
   const { isLoading, data, isError, error } = useAllProductsQuery(user!._id);
   const [rows, setRows] = useState<DataType[]>([]);
-  console.log({ isLoading, isError, data });
+
   if (isError) {
     toast.error((error as CustomError).data.message);
   }
@@ -56,7 +56,7 @@ const Products = () => {
       setRows(
         data?.products &&
           data.products.map((i) => ({
-            photo: <img src={i.photo.url} />,
+            photo: <img src={i?.photos[0].url} />,
             name: i.name,
             price: i.price,
             stock: i.stock,

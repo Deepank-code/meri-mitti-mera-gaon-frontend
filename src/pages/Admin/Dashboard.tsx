@@ -49,7 +49,28 @@ const Dashboard = () => {
       {/* sidebar */}
       <AdminSideBar />
       {isLoading ? (
-        <Skleton count={20} />
+        <div
+          style={{
+            gap: "2rem",
+
+            height: "80vh",
+          }}
+        >
+          <section
+            style={{
+              width: "100%",
+
+              display: "flex",
+              padding: "1rem",
+              flexDirection: "column",
+              gap: "4rem",
+            }}
+          >
+            <Skleton count={4} containerHeight="100%" />
+            <Skleton count={2} containerHeight="100%" />
+            <Skleton count={1} containerHeight="100%" />
+          </section>
+        </div>
       ) : (
         <main className="dashboard">
           <div className="bar">

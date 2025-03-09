@@ -1,6 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+
 import {
   AllProductsResponse,
+  AllReviewsResponse,
   CategoriesResponse,
   DeleteProductRequest,
   MessageResponse,
@@ -44,6 +46,29 @@ export const productApi = createApi({
       query: (id) => id,
       providesTags: ["Product"],
     }),
+    addReview: builder.mutation({
+      query: ({ productId, userId, data }) => {
+        return {
+          url: `/review/new/${productId}?id=${userId}`,
+          method: "POST",
+          body: data,
+        };
+      },
+      invalidatesTags: ["Product"],
+    }),
+    deleteReview: builder.mutation({
+      query: ({ productId, userId }) => {
+        return {
+          url: `/review/${productId}?id=${userId}`,
+          method: "DELETE",
+        };
+      },
+      invalidatesTags: ["Product"],
+    }),
+    allReviews: builder.query<AllReviewsResponse, string>({
+      query: (id) => `/all-reviews/${id}`,
+      providesTags: ["Product"],
+    }),
     newProduct: builder.mutation<MessageResponse, NewProductsRequest>({
       query: ({ id, formData }) => {
         return {
@@ -84,8 +109,11 @@ export const {
   useCategoriesQuery,
   useAllProductsQuery,
   useNewProductMutation,
+  useDeleteReviewMutation,
   useSearchProductsQuery,
   useProductDetailsQuery,
   useUpdateProductMutation,
+  useAllReviewsQuery,
   useDeleteProductMutation,
+  useAddReviewMutation,
 } = productApi;

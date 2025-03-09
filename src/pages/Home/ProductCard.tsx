@@ -3,10 +3,12 @@ import "./ProductCard.css";
 
 import { BiHeart } from "react-icons/bi";
 import { CartItem } from "../../types/types";
+import { useNavigate } from "react-router-dom";
+import { transformImages } from "../../utils/feature";
 
 type ProductPropType = {
   productId: string;
-  photo: string;
+  photos: [{ url: string; public_id: string }];
   name: string;
   price: number;
   stock: number;
@@ -15,15 +17,23 @@ type ProductPropType = {
 
 const ProductCard = ({
   productId,
-  photo,
+  photos,
   name,
   price,
   stock,
   handler,
 }: ProductPropType) => {
+  const navigate = useNavigate();
   return (
-    <div className="productCard">
-      <img src={photo} width="200px" alt="meal.name" />
+    <div
+      className="productCard"
+      onClick={() => navigate(`/product/${productId}`)}
+    >
+      <img
+        src={transformImages(`${photos?.[0].url}`, 300)}
+        width="200px"
+        alt="meal.name"
+      />
 
       <p>{name}</p>
 
@@ -33,7 +43,14 @@ const ProductCard = ({
 
       <button
         onClick={() =>
-          handler({ productId, photo, name, price, stock, quantity: 1 })
+          handler({
+            productId,
+            photo: photos[0].url,
+            name,
+            price,
+            stock,
+            quantity: 1,
+          })
         }
       >
         Add To Cart <FaBasketShopping />

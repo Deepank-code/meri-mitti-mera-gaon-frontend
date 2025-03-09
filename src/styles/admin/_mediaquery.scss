@@ -29,6 +29,24 @@
   }
 }
 @media screen and (width<=600px) {
+  .loading-text {
+    font-size: 16px;
+  }
+
+  .coupon {
+    max-width: 300px !important;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.1);
+    margin: 15px auto;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   .product-management {
     flex-direction: column;
     align-items: center;

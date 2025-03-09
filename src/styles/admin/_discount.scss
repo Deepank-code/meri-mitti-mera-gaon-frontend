@@ -1,0 +1,40 @@
+.coupon {
+  max-width: 800px;
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  margin: 15px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.coupon-info {
+  display: flex;
+  flex-direction: column;
+}
+.coupon-code {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+.coupon-expiry {
+  font-size: 14px;
+  color: #666;
+}
+.coupon-discount {
+  font-size: 16px;
+  font-weight: bold;
+  color: #28a745;
+}
+.btn {
+  padding: 8px 12px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: #c82333;
+}

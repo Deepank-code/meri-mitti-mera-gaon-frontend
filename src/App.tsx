@@ -22,10 +22,13 @@ const Search = lazy(() => import("./pages/Search.tsx"));
 const Orders = lazy(() => import("./pages/Orders.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 const Checkout = lazy(() => import("./pages/Checkout.tsx"));
+const ProductDetail = lazy(() => import("./pages/Product-detail.tsx"));
 
 // admin routes
 const Dashboard = lazy(() => import("./pages/Admin/Dashboard.tsx"));
 const Products = lazy(() => import("./pages/Admin/Products"));
+const NewCoupon = lazy(() => import("./pages/Admin/management/NewCoupon.tsx"));
+const Discount = lazy(() => import("./pages/Admin/Discount.tsx"));
 
 const Customers = lazy(() => import("./pages/Admin/Customers"));
 const NewProduct = lazy(
@@ -69,6 +72,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
           {/* not logged in routes */}
           <Route
             path="/login"
@@ -101,6 +105,8 @@ function App() {
             <Route path="/admin/products" element={<Products />} />
             <Route path="/admin/customer" element={<Customers />} />
             <Route path="/admin/transaction" element={<Transaction />} />
+            <Route path="/admin/coupon" element={<Discount />} />
+            <Route path="/admin/create-coupon" element={<NewCoupon />} />
           </Route>
           {/* charts */}
           <Route path="/admin/chart/bar" element={<BarCharts />} />

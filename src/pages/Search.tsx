@@ -116,7 +116,7 @@ const Search = () => {
                     price={i.price}
                     stock={i.stock}
                     name={i.name}
-                    photo={i.photo.url}
+                    photos={i.photos}
                     handler={addTocartHandler}
                   />
                 );

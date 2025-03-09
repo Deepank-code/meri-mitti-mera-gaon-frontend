@@ -75,7 +75,7 @@ const AdminSideBar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to={"/admin/app/coupon"} className="sidebar-link">
+              <NavLink to={"/admin/coupon"} className="sidebar-link">
                 <RiCoupon3Fill />
                 Create Coupon
               </NavLink>

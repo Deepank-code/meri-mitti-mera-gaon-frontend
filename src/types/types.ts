@@ -13,7 +13,10 @@ export type Product = {
   price: number;
   stock: number;
   category: string;
-  photo: { public_id: string; url: string };
+  description: string;
+  ratings: number;
+  numofReviews: number;
+  photos: [{ public_id: string; url: string }];
   _id: string;
 };
 export type ShippingInfo = {
@@ -112,4 +115,15 @@ export type Line = {
   products: number[];
   discount: number[];
   revenue: number[];
+};
+export type Reviews = {
+  comment: string;
+  rating: string;
+  user: {
+    name: string;
+    photo: string;
+    _id: string;
+  };
+  product: string;
+  _id: string;
 };
