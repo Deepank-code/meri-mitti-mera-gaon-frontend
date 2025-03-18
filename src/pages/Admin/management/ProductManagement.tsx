@@ -21,13 +21,10 @@ const ProductManagement = () => {
   );
   const params = useParams();
   const navigate = useNavigate();
-  const { data, isLoading, isError, refetch } = useProductDetailsQuery(
-    params.id!,
-    {
-      refetchOnReconnect: true,
-      refetchOnMountOrArgChange: true,
-    }
-  );
+  const { data, isLoading, refetch } = useProductDetailsQuery(params.id!, {
+    refetchOnReconnect: true,
+    refetchOnMountOrArgChange: true,
+  });
   if (!data) {
     console.log("no data receiverd");
   }
