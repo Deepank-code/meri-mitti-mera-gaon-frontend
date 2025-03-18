@@ -20,7 +20,6 @@ import Modal from "../Components/Modal";
 import { CiStar } from "react-icons/ci";
 import { responseToast } from "../utils/feature";
 import { RootState } from "../redux/store";
-import { MessageResponse } from "../types/api-types";
 
 export const userPhoto =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgF2suM5kFwk9AdFjesEr8EP1qcyUvah8G7w&s";
@@ -71,11 +70,9 @@ const ProductDetail = () => {
   const [addReviewLoading, setaddReviewLoading] = useState(false);
   const [deleteReview] = useDeleteReviewMutation();
   const navigate = useNavigate();
-  const {
-    data: reviewData,
-    isLoading: reviewLoading,
-    isError: reviewError,
-  } = useAllReviewsQuery(params.id!);
+  const { data: reviewData, isLoading: reviewLoading } = useAllReviewsQuery(
+    params.id!
+  );
   const [carouselOpen, setCarousalOpen] = useState(false);
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
